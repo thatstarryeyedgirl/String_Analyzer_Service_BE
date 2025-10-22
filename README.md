@@ -1,1 +1,46 @@
 # String_Analyzer_Service_BE
+
+Welcome to **String Analyzer Service!!**  
+This project is a **Django RESTful API** that analyzes strings and stores their computed properties in a database.
+
+## Overview  
+
+The **String Analyzer Service** accepts a string input and computes several properties about it, including:  
+**length** — Number of characters in the string  
+**is_palindrome** — Whether the string reads the same forwards and backwards (case-insensitive)  
+**unique_characters** — Number of distinct characters  
+**word_count** — Number of words separated by spaces  
+**sha256_hash** — Unique SHA-256 hash identifier for the string  
+**character_frequency_map** — How many times each character appears
+
+Each analyzed string is stored in the database with its computed properties.
+
+## Endpoints  
+
+### 1. Create / Analyze String
+**POST** `/string-analyzer/create/`
+**json**
+{
+ "value": "string to analyze"
+}
+Success Response (201 Created)
+Error Response (409 Conflict)
+
+### 2. Get Specific String
+**Get** `/string-analyzer/retrieve/<str:value>`
+
+Success Response (200 OK)
+Error Response (404 Not Found)
+
+### 3. Get All Strings with Filtering
+**GET** `/string-analyzer/list/?is_palindrome=true&min_length=5&max_length=20&word_count=2&contains_character=a`
+
+Success Response (200 OK)
+Error Response (400 Bad Request)
+
+
+### 5. Delete String
+**DELETE** `string-analyzer/delete/<str:value>`
+
+Success Response (204 No Content)
+Error Responses (404 Not Found)
