@@ -47,6 +47,40 @@ class ListStringView(APIView):
         return Response({"data": AnalyzeStringSerializer(word, many=True).data, "count": word.count(), "filters_applied": request.GET})
     
     
+class NaturalLanguageFilterView(APIView):
+    def get(self, request):
+        query = request.query_params.get('query', '').lower()
+        filters = {}
+
+        if "palindrome" in query:
+            filters['is_palindrome'] = True
+        if "single word" in query:
+            filters['word_count'] = 1
+        if "longer than" in query:
+            num = ''.join([c for c in query.split("longer than")[1] if c.isdigit()])
+            if num: filters['min_length'] = int(num)
+        if "shorter than" in query:
+            num = ''.join([c for c in query.split("shorter than")[1] if c.isdigit()])
+            if num: filters['max_length'] = int(num)
+        if "letter" in query:
+            filters['contains_character'] = query.split("letter")[-1].strip()[0]
+
+        strings = AnalyzeString.objects.all()
+        if 'is_palindrome' in filters:
+            strings = strings.filter(is_palindrome=True)
+        if 'word_count' in filters:
+            strings = strings.filter(word_count=filters['word_count'])
+        if 'min_length' in filters:
+            strings = strings.filter(length__gte=filters['min_length'])
+        if 'max_length' in filters:
+            strings = strings.filter(length__lte=filters['max_length'])
+        if 'contains_character' in filters:
+            strings = strings.filter(value__icontains=filters['contains_character'])
+
+        serializer = AnalyzeStringSerializer(strings, many=True)
+        return Response(serializer.data)
+    
+    
 class DeleteStringView(generics.DestroyAPIView):
     queryset = AnalyzeString.objects.all()
     serializer_class = AnalyzeStringSerializer
