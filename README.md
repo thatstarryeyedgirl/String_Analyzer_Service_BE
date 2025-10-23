@@ -49,3 +49,9 @@ Error Response (400 Bad Request)
 
 Success Response (204 No Content)
 Error Responses (404 Not Found)
+
+## Tech Stack
+- **Backend Framework:** Django & Django REST Framework (DRF)
+- **Database:** PostgreSQL (for development)
+- **Language:** Python 3.12.10
+- **Environment Management:** `.env`

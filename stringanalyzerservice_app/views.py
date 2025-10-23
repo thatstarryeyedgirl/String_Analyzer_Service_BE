@@ -49,8 +49,8 @@ class ListStringView(APIView):
     
 class NaturalLanguageFilterView(APIView):
     def get(self, request):
-        query = request.query_params.get('query', '').lower()
-        filters = {}
+        query = request.query_params.get('query', '').lower() # takes whatever the user typed in the query part of the URL and then converts it to lower case to make comparison easier
+        filters = {} # an empty dictionary
 
         if "palindrome" in query:
             filters['is_palindrome'] = True
