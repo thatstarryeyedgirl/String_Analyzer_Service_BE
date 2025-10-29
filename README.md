@@ -23,7 +23,6 @@ Each analyzed string is stored in the database with its computed properties.
 {
 "value": "string to analyze"
 }
-
 - Success Response (201 Created)
 - Error Response (409 Conflict)
 
