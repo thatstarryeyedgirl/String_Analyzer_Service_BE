@@ -19,36 +19,37 @@ Each analyzed string is stored in the database with its computed properties.
 
 ### 1. Create / Analyze String
 **POST** `/string-analyzer/create/`
-**json**
-{
- "value": "string to analyze"
-}
-Success Response (201 Created)
-Error Response (409 Conflict)
+- **json**
+- {
+- "value": "string to analyze"
+- }
+
+- Success Response (201 Created)
+- Error Response (409 Conflict)
 
 ### 2. Get Specific String
 **GET** `/string-analyzer/retrieve/<str:value>/`
 
-Success Response (200 OK)
-Error Response (404 Not Found)
+- Success Response (200 OK)
+- Error Response (404 Not Found)
 
 ### 3. Get All Strings with Filtering
 **GET** `/string-analyzer/list/?is_palindrome=true&min_length=5&max_length=20&word_count=2&contains_character=a`
 
-Success Response (200 OK)
-Error Response (400 Bad Request)
+- Success Response (200 OK)
+- Error Response (400 Bad Request)
 
 ### 4. Natural Language Filtering
 **GET** `/string-analyzer/filter-by-natural-language/?query=all%20single%20word%20palindromic%20string`
 
-Success Response (200 OK)
-Error Response (400 Bad Request)
+- Success Response (200 OK)
+- Error Response (400 Bad Request)
 
 ### 5. Delete String
 **DELETE** `string-analyzer/delete/<str:value>/`
 
-Success Response (204 No Content)
-Error Responses (404 Not Found)
+- Success Response (204 No Content)
+- Error Responses (404 Not Found)
 
 ## Tech Stack
 - **Backend Framework:** Django & Django REST Framework (DRF)
