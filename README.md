@@ -55,3 +55,10 @@ Error Responses (404 Not Found)
 - **Database:** PostgreSQL (for development)
 - **Language:** Python 3.12.10
 - **Environment Management:** `.env`
+
+## Postman Documentation
+The String Analyzer Service API is fully documented in Postman to simplify testing and interaction with all available endpoints.
+The collection includes examples for creating, retrieving, filtering, and deleting analyzed strings, as well as natural language filtering.
+
+Each request contains preconfigured methods, headers, sample payloads, and example responses to help you understand how the API behaves.
+- **Postman Link:** `https://documenter.getpostman.com/view/48778720/2sB3Wnv1it`
