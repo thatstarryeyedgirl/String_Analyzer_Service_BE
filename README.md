@@ -20,9 +20,9 @@ Each analyzed string is stored in the database with its computed properties.
 ### 1. Create / Analyze String
 **POST** `/string-analyzer/create/`
 - **json**
-- {
-- "value": "string to analyze"
-- }
+{
+"value": "string to analyze"
+}
 
 - Success Response (201 Created)
 - Error Response (409 Conflict)
