@@ -1,1 +1,0 @@
-web: gunicorn stringanalyzerservice.wsgi --log-file -
