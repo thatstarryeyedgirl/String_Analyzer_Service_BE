@@ -86,4 +86,13 @@ class DeleteStringView(generics.DestroyAPIView):
     serializer_class = AnalyzeStringSerializer
     lookup_field = 'value'
     
+    def destroy(self, request, *args, **kwargs):
+        try:
+            instance = self.get_object()
+            self.perform_destroy(instance)
+            return Response({"message": "String deleted successfully"}, status=status.HTTP_204_NO_CONTENT)
+        except AnalyzeString.DoesNotExist:
+            return Response({"error": "String not found"}, status=status.HTTP_404_NOT_FOUND)
+        except ValueError:
+            return Response({"error": "Invalid query parameters"}, status=status.HTTP_400_BAD_REQUEST)
     
