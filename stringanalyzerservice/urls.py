@@ -16,13 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.http import JsonResponse
-
-def root_view(request):
-    return JsonResponse({"message": "String Analyzer Service API", "status": "running"})
-
 urlpatterns = [
-    path('', root_view, name='root'),
     path('admin/', admin.site.urls),
     path('string-analyzer/', include('stringanalyzerservice_app.urls'))
 ]

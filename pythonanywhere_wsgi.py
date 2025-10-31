@@ -2,7 +2,7 @@
 
 import os
 import sys
-from django.core.wsgi import get_wsgi_application
+
 from dotenv import load_dotenv
 
 # Add your project directory to the sys.path
@@ -13,6 +13,7 @@ if path not in sys.path:
 # Load environment variables from .env file
 load_dotenv('/home/padimi/String-Analyzer-Service/.env')
 
+from django.core.wsgi import get_wsgi_application
 # Set environment variable for Django settings
 os.environ['DJANGO_SETTINGS_MODULE'] = 'stringanalyzerservice.settings'
 
